@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sensitive Word System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Sensitive Word Detection</h1>
+    <form id="detectForm">
+        <label for="textInput"></label>
+        <textarea id="textInput" placeholder="Enter text to check"></textarea>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('detectForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const text = document.getElementById('textInput').value;
+
+            try {
+                const response = await fetch('http://localhost:3389/api/detect', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ text })
+                });
+
+                const result = await response.json();
+                document.getElementById('result').innerText = 'Detected words: ' + (result.detected_words || []).join(', ');
+            } catch (error) {
+                console.error('Error detecting words:', error);
+            }
+        });
+    </script>
+
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>

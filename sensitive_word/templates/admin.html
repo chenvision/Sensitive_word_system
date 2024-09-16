@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--管理员网页界面-->
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Sensitive Word System</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <!--引用了 Bootstrap 4.3.1 的 CDN 链接，用于样式和布局。-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <!--引入一个本地的CSS文件styles.css.url_for:生成URL-->
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <!--简化JS的操作-->
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <!--是Bootstrap的依赖库之一-->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<!--添加Bootstrap的引用-->
+
+<body>
+    <div class="container mt-5"><!--使用Bootstrap的container类，设置一个顶部外边距-->
+        <h1 class="text-center mb-5">Admin Panel</h1><!--设置居中和底部外边距-->
+
+        <!-- Add Word Section -->
+        <div class="card mb-4"><!--使用 Bootstrap 的 card 组件，设置底部外边距。-->
+            <div class="card-header">
+                <h2 class="mb-0">Add Word</h2>
+            </div>
+            <div class="card-body"><!--卡片主体：包含一个表单，用于输入和提交要添加的敏感词。-->
+                <form id="addWordForm" class="form-inline"><!--行内表单-->
+                    <div class="form-group mx-sm-3 mb-2">
+                        <label for="addWordInput" class="sr-only">Word</label>
+                        <input type="text" class="form-control" id="addWordInput" placeholder="Enter word to add">
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-2">Add</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Delete Word Section -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2 class="mb-0">Delete Word</h2>
+            </div>
+            <div class="card-body">
+                <form id="deleteWordForm" class="form-inline">
+                    <div class="form-group mx-sm-3 mb-2">
+                        <label for="deleteWordInput" class="sr-only">Word</label>
+                        <input type="text" class="form-control" id="deleteWordInput" placeholder="Enter word to delete">
+                    </div>
+                    <button type="submit" class="btn btn-danger mb-2">Delete</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Add Regex Section -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2 class="mb-0">Update Regex</h2>
+            </div>
+            <div class="card-body">
+                <form id="updateRegexForm" class="form-inline">
+                    <div class="form-group mx-sm-3 mb-2">
+                        <label for="wordInput" class="sr-only">Word</label>
+                        <input type="text" class="form-control" id="wordInput" placeholder="Enter word to update" required>
+                    </div>
+                    <div class="form-group mx-sm-3 mb-2">
+                        <label for="newRegexInput" class="sr-only">New Regex</label>
+                        <input type="text" class="form-control" id="newRegexInput" placeholder="Enter new regex" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-2">Update Regex</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Test Regex Section -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2 class="mb-0">Test Regex</h2>
+            </div>
+            <div class="card-body">
+                <form id="testRegexForm" class="form-inline">
+                    <div class="form-group mx-sm-3 mb-2">
+                        <label for="testRegexInput" class="sr-only">Test Text</label>
+                        <input type="text" class="form-control" id="testRegexInput" placeholder="Enter text to test">
+                    </div>
+                    <button type="submit" class="btn btn-info mb-2">Test Regex</button>
+                </form>
+                <div id="regexTestResult" class="mt-3"></div>
+            </div>
+        </div>
+
+        <!-- Current Words Section -->
+        <div class="card">
+            <div class="card-header">
+                <h2 class="mb-0">Current Words</h2>
+            </div>
+            <div class="card-body">
+                <div id="currentWords"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/admin_scripts.js') }}"></script>
+<!-- 处理表单提交和敏感词列表的动态更新。   -->
+</body>
+</html>

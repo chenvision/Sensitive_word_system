@@ -1,0 +1,7 @@
+flask==2.3.3 # 假设需要Flask来提供一个web接口
+SQLAlchemy==1.4.52 # 假设需要SQLAlchemy来处理数据库操作
+mysql-connector-python
+requests
+beautifulsoup4
+sqlalchemy
+brotli==1.1.0

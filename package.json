@@ -1,0 +1,15 @@
+{
+  "name": "sensitive_word_system",
+  "version": "1.0.0",
+  "description": "敏感词检测",
+  "main": "main.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "vision",
+  "license": "ISC",
+  "keywords": []
+}
